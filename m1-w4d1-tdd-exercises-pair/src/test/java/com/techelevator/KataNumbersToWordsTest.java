@@ -55,6 +55,16 @@ public class KataNumbersToWordsTest {
 		Assert.assertEquals("twenty-six thousand and five", test.numbersToWords(26005));
 		}
 	
+	@Test
+	public void six_digit_numbers_become_words() {
+		Assert.assertEquals("five hundred thousand ", test.numbersToWords(500000));
+		Assert.assertEquals("four hundred and two thousand ", test.numbersToWords(402000));
+		Assert.assertEquals("seven hundred thousand two hundred ", test.numbersToWords(700200));
+		Assert.assertEquals("eight hundred thousand sixty", test.numbersToWords(800060));
+		Assert.assertEquals("seven hundred thousand and six", test.numbersToWords(700006));
+		Assert.assertEquals("nine hundred and ninety-nine thousand nine hundred ninety-nine", test.numbersToWords(999999));
+		}
+	
 	
 	
 }

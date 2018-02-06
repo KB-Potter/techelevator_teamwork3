@@ -6,7 +6,7 @@ public class KataStringCalculator {
 		
 		int result = 0; 
 		
-		if (!numbers.isEmpty()) {
+		if (!numbers.isEmpty()) { //if the string of numbers isn't empty
 			
 			String[] temp =  numbers.split(",|\n|;|!"); 
 			

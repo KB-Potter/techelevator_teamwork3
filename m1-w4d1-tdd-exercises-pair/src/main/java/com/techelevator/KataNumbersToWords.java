@@ -30,7 +30,30 @@ public class KataNumbersToWords {
 			
 		for (int i = 0; i < array.size()-1; i++) {
 			
-			if (array.size() == 5) {
+			if (array.size() == 6) {
+				result += this.lessThanTwenty(array.get(i));
+					if (array.get(i+1) == 0 && array.get(i+2) == 0) { //if the next two digits are 0
+							result += " hundred ";
+							result += "thousand ";
+							array.remove(i);
+							array.remove(i);
+							array.remove(i); //remove the first three indexes and then it will continue at length 3
+					} else if (array.get(i+1) == 0) {
+						result += " hundred and ";
+						result += this.lessThanTwenty(array.get(i+2));
+						result += " thousand ";
+						array.remove(i);
+						array.remove(i);
+						array.remove(i); //remove the first three indexes and then it will continue at length 3
+					} else {
+						result += " hundred and ";
+						array.remove(i);
+					}
+			}
+			
+			
+			
+			if (array.size() == 5) { //if the number is e.g. 50,000
 				if (array.get(i) == 1) {
 					int added = array.get(i) + array.get(i+1) + 9;
 					result += this.lessThanTwenty(added);
@@ -57,12 +80,15 @@ public class KataNumbersToWords {
 			
 			if (array.size() == 3) {
 				
+				if (array.get(i) == 0 && array.get(i+1) == 0 && array.get(i+2) == 0) { //if all three numbers are 0, end the for loop
+					break;
+				}
+				
 				if (array.get(i) == 0 && array.get(i+1) == 0) {
 					result += "and ";
 					result += this.lessThanTwenty(array.get(i+2)); 
 					array.remove(i); 
 					array.remove(i+1);
-					
 					break;
 					
 					
