@@ -17,7 +17,6 @@ public class WordCount {
 		int wordCount = 0; 
 		int sentenceCount = 0;
 		
-		
 		try(Scanner fileScanner = new Scanner(alice)) {
 			
 			
@@ -36,23 +35,10 @@ public class WordCount {
 				
 			}
 			
-			
 		}
 		
 		System.out.println("The word count is: " + wordCount );
 		System.out.println("The sentence count is: " + sentenceCount);
-
-		
-//		//InputStream playerAnswer = new InputStream(System.in); //playerAnswer b/c we want to get the input from player, which is the quiz answer
-//		//BufferedInputStream quizQuestions = new BufferedInputStream(playerAnswer); //want to read the whole line, not necessary for player answer b/c it's only one char
-//		
-//		System.out.print("Welcome to the Amazing Quiz Machine!");
-//		System.out.println("What quiz would you like to do?");
-//		//System.out.println("Please enter the text file here: " + quizQuestions);
-//		//String input = quizQuestions.readLine(playerAnswer); 
-		
-		
-		
 		
 	}
 
