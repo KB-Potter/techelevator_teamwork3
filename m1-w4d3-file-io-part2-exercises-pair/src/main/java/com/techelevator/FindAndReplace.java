@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
 import java.util.Scanner;
 
 public class FindAndReplace {
@@ -14,29 +15,7 @@ public class FindAndReplace {
 		File alice = new File("/Users/sgirard/workspace/pair-exercises/java-week4-pair-exercise/m1-w4d3-file-io-part2-exercises-pair/alices_adventures_in_wonderland.txt"); 
 			
 			Scanner in = new Scanner(System.in);
-			System.out.println("Please enter the complete file path of the origin file you'd like to search:");
 			File originFile = getInputFileFromUser();
-			
-			//setup destination file
-			System.out.println("Please enter a destination path:");
-			String destinationPath = in.nextLine();
-			
-			File destinationFile = new File(destinationPath);
-			
-			try {
-				String fakeAlice = destinationPath + "newAlice.txt";
-				File newAlice = new File(fakeAlice);
-			} catch (FileNotFoundException e) {
-				System.out.println("Invalid destination path");
-				break;
-			}
-			
-			
-			
-			
-//			String basepath = "/Users/sgirard/workspace/pair-exercises/java-week4-pair-exercise/m1-w4d3-file-io-part2-exercises-pair";
-//			String fakeAlice = basepath + "/newAlice.txt";
-//			File newAlice = new File(fakeAlice);
 			
 			if (originFile.exists() == false) {
 				try {
@@ -46,46 +25,60 @@ public class FindAndReplace {
 				}
 			}
 			
-			if (destinationFile.exists() == false) {
-				try {
-					destinationFile.createNewFile();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+			//setup destination file
+			System.out.print("Please enter a destination path: ");
+			String addToPath = in.nextLine();
+			
+			File destinationPath = new File(addToPath);
+			
+			if (!destinationPath.exists()) {
+				System.out.print("Invalid destination path");
+				System.exit(0);
 			}
 			
+			File doesItExist = new File (addToPath + "newAlice2.txt");
+			Files.deleteIfExists(doesItExist.toPath());
+			//doesItExist.delete();
+			
+			String fakeAlice = addToPath + "newAlice2.txt";
+			File newAlice = new File(fakeAlice);
+		
 			System.out.println("Which word are we searching for?");
 			String searchWord = in.next();
 			
 			System.out.println("Which word are we replacing it with?");
 			String replaceWord = in.next();
+			int count = 0;
 			
-//			try(Scanner fileScanner = new Scanner(alice)) {
-//				while (fileScanner.hasNextLine()) {
-//					String wordLine = fileScanner.nextLine(); 
-//					
-//					String replaced = wordLine.replaceAll(searchWord, replaceWord);
-//					
-//					try (FileWriter writer = new FileWriter(newAlice, true)) {
-//						if (wordLine.contains(searchWord)) {
-//							writer.write(replaced + "\n");
-//						} else {
-//							writer.write(wordLine + "\n");
-//						}
-//						writer.flush();
-//						}
-//					}
-//					
-//				}
-//				if (alice.getTotalSpace() ==	newAlice.getTotalSpace()) {
-//							System.out.println("Search word not found!");
+			try (FileWriter writer = new FileWriter(newAlice, false)) {
+			try(Scanner fileScanner = new Scanner(originFile)) {
+				while (fileScanner.hasNextLine()) {
+					String wordLine = fileScanner.nextLine(); 
+					
+					String replaced = wordLine.replaceAll(searchWord, replaceWord);
+					
+					
+						if (wordLine.contains(searchWord)) {
+							writer.write(replaced + "\n");
+							count++;
+						} else {
+							writer.write(wordLine + "\n");
+						}
+						writer.flush();
+						}
+					}
+					
+				}
+			if (count == 0) {
+				System.out.println("Search word not found!");
+			}
 				
 			}
 			
 	@SuppressWarnings("resource")
 	private static File getInputFileFromUser() {
 		Scanner userInput = new Scanner(System.in);
-		System.out.print("Please enter path to input file >>> ");
+		System.out.print("Please enter the complete file path of the origin file you'd like to search: ");
 		String path = userInput.nextLine();
 		
 		File inputFile = new File(path);
