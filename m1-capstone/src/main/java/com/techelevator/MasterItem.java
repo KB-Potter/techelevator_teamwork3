@@ -24,6 +24,8 @@ public interface MasterItem {
 	
 	public void purchase(); //when we want to change quantity
 	
+	public String purchaseAndMessage(String getName);	
+	
 	}
 	
 //	public abstract String getName(); 

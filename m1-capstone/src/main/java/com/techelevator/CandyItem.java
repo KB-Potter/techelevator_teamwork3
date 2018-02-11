@@ -54,6 +54,18 @@ public class CandyItem implements MasterItem {
 		}
 	}
 	
+	public String purchaseAndMessage(String getName) {
+		
+		String message ="";
+		if (this.quantity == 0) {
+			message += "This item is SOLD OUT";
+		} else {
+			message += "You selected " + getName;
+			this.quantity -= 1; 
+		}
+		return message;
+	}
+	
 	
 	
 	

@@ -16,10 +16,10 @@ public class VendingMachineOptionsTest {
 		Clifford = new VendingMachineOptions();
 	}
 	
-	@Test
-	public void get_options() throws FileNotFoundException {
-		System.out.println(Clifford.displayOptions()); 
-	}
+//	@Test
+//	public void get_options() throws FileNotFoundException {
+//		System.out.println(Clifford.displayOptions()); 
+//	}
 	
 	
 	

@@ -9,12 +9,14 @@ import java.io.IOException;
 
 public class VendingMachineOptions {
 	
-	File vmOptions = new File("/Users/kpotter/Development/java-week4-pair-exercise/m1-capstone/vendingmachine.csv"); 
 	
+	
+	public Map<String,MasterItem> getMapOfItems() throws FileNotFoundException { 
+	
+	File vmOptions = new File("/Users/sgirard/workspace/pair-exercises/java-week4-pair-exercise/m1-capstone/vendingmachine.csv"); 
+		
 	Map<String, MasterItem> foodOptions = new LinkedHashMap<String, MasterItem>(); //how we get the names, price, slot number for our food options
-	
-	public String displayOptions() throws FileNotFoundException { 
-	
+		
 	String options = ""; 	
 		
 	try(Scanner fileScanner = new Scanner(vmOptions)) {
@@ -61,20 +63,20 @@ public class VendingMachineOptions {
 			}
 		}
 		
-		for (String s : foodOptions.keySet())  {
-			options += foodOptions.get(s).getSlot() + " ";
-			options += foodOptions.get(s).getName() + " "; 
-			options += foodOptions.get(s).getPrice() + " "; 
-			options += foodOptions.get(s).getQuantity() + "\\\n"; 
-			
-			
+//		for (String s : foodOptions.keySet())  {
+//			options += foodOptions.get(s).getSlot() + " ";
+//			options += foodOptions.get(s).getName() + " "; 
+//			options += foodOptions.get(s).getPrice() + " "; 
+//			options += foodOptions.get(s).getQuantity() + "\\\n"; 
+//			
+//			
 //			System.out.println(foodOptions.get(s).getSlot() + " ");
 //			System.out.print(foodOptions.get(s).getName() + " ");
 //			System.out.print(foodOptions.get(s).getPrice() + " ");
 //			System.out.println(foodOptions.get(s).getQuantity());
-		}
+//		}
 	}
-	return options;
+	return foodOptions;
 	}
 }
 
