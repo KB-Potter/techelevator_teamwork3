@@ -13,7 +13,7 @@ public class VendingMachineOptions {
 	
 	public Map<String,MasterItem> getMapOfItems() throws FileNotFoundException { 
 	
-	File vmOptions = new File("/Users/sgirard/workspace/pair-exercises/java-week4-pair-exercise/m1-capstone/vendingmachine.csv"); 
+	File vmOptions = new File("/Users/kpotter/Development/java-week4-pair-exercise/m1-capstone/vendingmachine.csv"); 
 		
 	Map<String, MasterItem> foodOptions = new LinkedHashMap<String, MasterItem>(); //how we get the names, price, slot number for our food options
 		

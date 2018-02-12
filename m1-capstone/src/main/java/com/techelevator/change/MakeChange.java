@@ -10,10 +10,10 @@ public class MakeChange {
 	
 
 	
-	public double makeChange (double currentBalance) {
+	public String makeChange (double currentBalance) {
 		Coin[] coins = new Coin[] { 	new Quarter(), new Dime(), new Nickel() };
 		currentBalance *= 100;
-		double result = 0;
+		String result = "";
 		
 		Map<Coin, Integer> change = new HashMap<Coin, Integer>();
 		
@@ -28,9 +28,10 @@ public class MakeChange {
 		}
 		
 		for (Coin coin : change.keySet()) {
-			result += (double)coin.getValue();
+			result += (change.get(coin) + " " + coin.getName() + "(s)" + " "); 
+			//result += (double)coin.getValue();
 		}
-		result /= 10;
+		//result /= 10;
 		
 		return result;
 	}
